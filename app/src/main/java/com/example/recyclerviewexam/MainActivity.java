@@ -1,21 +1,19 @@
 package com.example.recyclerviewexam;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
-import com.example.recyclerviewexam.models.Contact;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements ContactRecyclerAdapter.MyOnContactClickListener {
+public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapter.MyOnClickListener {
 
-    private ContactRecyclerAdapter mAdapter;
+    private ExamRecyclerAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,17 +21,21 @@ public class MainActivity extends AppCompatActivity implements ContactRecyclerAd
         setContentView(R.layout.activity_main);
 
         // Data
-        List<Contact> dataList = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            dataList.add(new Contact("아무개 " + (i + 1) + "호"));
-        }
+        List<Class> dataList = new ArrayList<>();
+        dataList.add(IntentActivity.class);
+        dataList.add(SharedPreferenceActivity.class);
+        dataList.add(RecyclerViewActivity.class);
 
         // Adapter
-        mAdapter = new ContactRecyclerAdapter();
+        mAdapter = new ExamRecyclerAdapter();
 
         // View
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setAdapter(mAdapter);
+
+        DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+
+        recyclerView.addItemDecoration(decoration);
 
 
         // 나중에 아이템 갱신
@@ -41,7 +43,12 @@ public class MainActivity extends AppCompatActivity implements ContactRecyclerAd
         mAdapter.notifyDataSetChanged();
 
         // 클릭 이벤트 설정
-        mAdapter.setMyOnContactClickListener(this);
+        mAdapter.setMyOnClickListener(this);
+    }
+
+    private void moveActivity(Class clazz) {
+        Intent intent = new Intent(this, clazz);
+        startActivity(intent);
     }
 
     @Override
@@ -54,11 +61,11 @@ public class MainActivity extends AppCompatActivity implements ContactRecyclerAd
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_remove:
-                if (mAdapter.removeItems()) {
-                    Toast.makeText(this, "몇 건이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "삭제할 아이템을 선택하세요", Toast.LENGTH_SHORT).show();
-                }
+//                if (mAdapter.removeItems()) {
+//                    Toast.makeText(this, "몇 건이 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(this, "삭제할 아이템을 선택하세요", Toast.LENGTH_SHORT).show();
+//                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -66,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements ContactRecyclerAd
     }
 
     @Override
-    public void onContactSelected(View view, Contact contact, int position) {
-        Toast.makeText(this, position + ": " + contact, Toast.LENGTH_SHORT).show();
+    public void onSelected(Class clazz) {
+        moveActivity(clazz);
     }
 }
