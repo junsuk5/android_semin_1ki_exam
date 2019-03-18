@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.recyclerviewexam.exam283.Exam283Activity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(IntentActivity.class);
         dataList.add(SharedPreferenceActivity.class);
         dataList.add(RecyclerViewActivity.class);
+        dataList.add(Exam283Activity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();
