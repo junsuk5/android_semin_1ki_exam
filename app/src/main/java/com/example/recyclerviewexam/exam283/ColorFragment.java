@@ -5,9 +5,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.recyclerviewexam.R;
 import com.example.recyclerviewexam.eventbus.events.ItemClickEvent;
+import com.example.recyclerviewexam.eventbus.events.SecondEvent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -37,6 +39,11 @@ public class ColorFragment extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(ItemClickEvent event) {
         setColor(event.color);
+    };
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onSecondMessageEvent(SecondEvent event) {
+        Toast.makeText(getActivity(), event.toString(), Toast.LENGTH_SHORT).show();
     };
 
     @Override

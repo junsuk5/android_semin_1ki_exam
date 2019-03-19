@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.recyclerviewexam.R;
 import com.example.recyclerviewexam.eventbus.dummy.DummyContent.DummyItem;
 import com.example.recyclerviewexam.eventbus.events.ItemClickEvent;
+import com.example.recyclerviewexam.eventbus.events.SecondEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -43,9 +44,11 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
                 if (holder.getAdapterPosition() == 3) {
                     // 빨간색
                     EventBus.getDefault().post(new ItemClickEvent(Color.RED));
-                } else {
+                } else if (holder.getAdapterPosition() == 0) {
                     // 노란색
                     EventBus.getDefault().post(new ItemClickEvent(Color.YELLOW));
+                } else {
+                    EventBus.getDefault().post(new SecondEvent());
                 }
             }
         });
