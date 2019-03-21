@@ -13,7 +13,7 @@ public class Exam283Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exam283);
 
-        ColorFragment fragment = ColorFragment.newInstance();
+        ColorFragment fragment = new ColorFragment();
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.linear_layout, fragment)
