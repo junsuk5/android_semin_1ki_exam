@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.recyclerviewexam.countdown.CountDownActivity;
 import com.example.recyclerviewexam.eventbus.EventBusExamActivity;
 import com.example.recyclerviewexam.exam283.Exam283Activity;
 import com.example.recyclerviewexam.resexam.ResExamActivity;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(EventBusExamActivity.class);
         dataList.add(ThreadActivity.class);
         dataList.add(ResExamActivity.class);
+        dataList.add(CountDownActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();
