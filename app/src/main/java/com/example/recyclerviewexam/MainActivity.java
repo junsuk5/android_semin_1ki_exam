@@ -10,6 +10,7 @@ import android.view.MenuItem;
 
 import com.example.recyclerviewexam.eventbus.EventBusExamActivity;
 import com.example.recyclerviewexam.exam283.Exam283Activity;
+import com.example.recyclerviewexam.resexam.ResExamActivity;
 import com.example.recyclerviewexam.thread.ThreadActivity;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(Exam283Activity.class);
         dataList.add(EventBusExamActivity.class);
         dataList.add(ThreadActivity.class);
+        dataList.add(ResExamActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();
