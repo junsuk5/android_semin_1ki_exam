@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
     private void moveActivity(Class clazz) {
         Intent intent = new Intent(this, clazz);
         startActivity(intent);
+        overridePendingTransition(R.anim.shake, R.anim.out);
     }
 
     @Override
