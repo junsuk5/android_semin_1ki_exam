@@ -32,9 +32,12 @@ public class CountDownActivity extends AppCompatActivity
 
     @Override
     public void onStartButtonClicked() {
-        mCountDownTask = new CountDownTask(count -> {
-            mCountDownFragment.setCount(count);
-            mCountTextView.setText(count + "");
+        mCountDownTask = new CountDownTask(new CountDownTask.CountTickListener() {
+            @Override
+            public void onTick(int count) {
+                mCountDownFragment.setCount(count);
+                mCountTextView.setText(count + "");
+            }
         });
         mCountDownTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
