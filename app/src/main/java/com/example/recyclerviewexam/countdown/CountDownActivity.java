@@ -7,34 +7,12 @@ import android.widget.TextView;
 
 import com.example.recyclerviewexam.R;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 public class CountDownActivity extends AppCompatActivity
         implements CountDownFragment.OnCountDownFragmentListener {
 
     private TextView mCountTextView;
     private CountDownFragment mCountDownFragment;
     private CountDownTask mCountDownTask;
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onCountDownEvent(CountDownEvent event) {
-        mCountDownFragment.setCount(event.count);
-        mCountTextView.setText(event.count + "");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +32,10 @@ public class CountDownActivity extends AppCompatActivity
 
     @Override
     public void onStartButtonClicked() {
-        mCountDownTask = new CountDownTask();
+        mCountDownTask = new CountDownTask(count -> {
+            mCountDownFragment.setCount(count);
+            mCountTextView.setText(count + "");
+        });
         mCountDownTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
@@ -66,11 +47,17 @@ public class CountDownActivity extends AppCompatActivity
         mCountDownFragment.setCount(0);
     }
 
-    static class CountDownEvent{
-        int count;
-    }
-
     static class CountDownTask extends AsyncTask<Void, Integer, Void> {
+
+        interface CountTickListener {
+            void onTick(int count);
+        }
+
+        private CountTickListener mListener;
+
+        public CountDownTask(CountTickListener listener) {
+            mListener = listener;
+        }
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -89,9 +76,7 @@ public class CountDownActivity extends AppCompatActivity
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
 
-            CountDownEvent event = new CountDownEvent();
-            event.count = values[0];
-            EventBus.getDefault().post(event);
+            mListener.onTick(values[0]);
         }
     }
 }
