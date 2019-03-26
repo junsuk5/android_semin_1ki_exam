@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.example.recyclerviewexam.countdown.CountDownActivity;
 import com.example.recyclerviewexam.eventbus.EventBusExamActivity;
 import com.example.recyclerviewexam.exam283.Exam283Activity;
+import com.example.recyclerviewexam.jsrecycleradapter.JsRecyclerExamActivity;
 import com.example.recyclerviewexam.kotlinexam.KotlinExamActivity;
 import com.example.recyclerviewexam.kotlinexam.jsonplaceholder.LoginActivity;
 import com.example.recyclerviewexam.network.NetworkActivity;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(NetworkActivity.class);
         dataList.add(KotlinExamActivity.class);
         dataList.add(LoginActivity.class);
+        dataList.add(JsRecyclerExamActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();
