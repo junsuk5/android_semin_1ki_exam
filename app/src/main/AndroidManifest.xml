@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".network.NetworkActivity"></activity>
+        <activity android:name=".kotlinexam.KotlinExamActivity"></activity>
+        <activity android:name=".network.NetworkActivity" />
         <activity android:name=".countdown.CountDownActivity" />
         <activity android:name=".resexam.TransitionTargetActivity" />
         <activity android:name=".resexam.ResExamActivity" />
