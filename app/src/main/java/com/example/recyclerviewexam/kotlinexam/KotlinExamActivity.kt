@@ -27,5 +27,10 @@ class KotlinExamActivity : AppCompatActivity() {
 
             toast("클릭!!!")
         }
+
+        val item = ItemKotlin("제목", 1)
+        item.title = "제목"
+        val title = item.title
+
     }
 }
