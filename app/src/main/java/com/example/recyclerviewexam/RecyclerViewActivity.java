@@ -1,11 +1,15 @@
 package com.example.recyclerviewexam;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.recyclerviewexam.models.Contact;
@@ -68,5 +72,18 @@ public class RecyclerViewActivity extends AppCompatActivity implements ContactRe
     @Override
     public void onContactSelected(View view, Contact contact, int position) {
         Toast.makeText(this, position + ": " + contact, Toast.LENGTH_SHORT).show();
+    }
+
+    public static class ContactViewHolder extends RecyclerView.ViewHolder {
+        ImageView pictureImageView;
+        TextView nameTextView;
+        CheckBox checkBox;
+
+        public ContactViewHolder(@NonNull View itemView) {
+            super(itemView);
+            pictureImageView = itemView.findViewById(R.id.picture_image_view);
+            nameTextView = itemView.findViewById(R.id.nameTextView);
+            checkBox = itemView.findViewById(R.id.checkBox);
+        }
     }
 }

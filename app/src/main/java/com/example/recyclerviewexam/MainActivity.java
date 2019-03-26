@@ -12,6 +12,7 @@ import com.example.recyclerviewexam.countdown.CountDownActivity;
 import com.example.recyclerviewexam.eventbus.EventBusExamActivity;
 import com.example.recyclerviewexam.exam283.Exam283Activity;
 import com.example.recyclerviewexam.kotlinexam.KotlinExamActivity;
+import com.example.recyclerviewexam.kotlinexam.jsonplaceholder.LoginActivity;
 import com.example.recyclerviewexam.network.NetworkActivity;
 import com.example.recyclerviewexam.resexam.ResExamActivity;
 import com.example.recyclerviewexam.thread.ThreadActivity;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(CountDownActivity.class);
         dataList.add(NetworkActivity.class);
         dataList.add(KotlinExamActivity.class);
+        dataList.add(LoginActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();
