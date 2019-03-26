@@ -39,7 +39,7 @@ public class JsFragment extends Fragment {
         items.add(new JsItem("7"));
         items.add(new JsItem("8"));
 
-        recyclerView.setAdapter(new JsRecyclerAdapter<JsItem, JsViewHolder>() {
+        recyclerView.setAdapter(new JsRecyclerAdapter<JsItem, JsViewHolder>(items) {
 
             @NonNull
             @Override
@@ -53,12 +53,6 @@ public class JsFragment extends Fragment {
             protected void onBindViewHolder(@NonNull JsViewHolder holder, int position, @NonNull JsItem model) {
                 holder.title.setText(model.getTitle());
             }
-
-            @Override
-            public List<JsItem> onData() {
-                return items;
-            }
-
         });
     }
 

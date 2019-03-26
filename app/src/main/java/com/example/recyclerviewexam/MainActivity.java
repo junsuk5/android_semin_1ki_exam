@@ -17,6 +17,7 @@ import com.example.recyclerviewexam.kotlinexam.jsonplaceholder.LoginActivity;
 import com.example.recyclerviewexam.network.NetworkActivity;
 import com.example.recyclerviewexam.resexam.ResExamActivity;
 import com.example.recyclerviewexam.thread.ThreadActivity;
+import com.example.recyclerviewexam.todos.TodosActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(KotlinExamActivity.class);
         dataList.add(LoginActivity.class);
         dataList.add(JsRecyclerExamActivity.class);
+        dataList.add(TodosActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();
