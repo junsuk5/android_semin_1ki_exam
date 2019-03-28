@@ -1,5 +1,6 @@
 package com.example.recyclerviewexam.network;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -8,13 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.recyclerviewexam.R;
+import com.example.recyclerviewexam.databinding.ItemPhotoBinding;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,14 +88,7 @@ public class NetworkActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull PhotoHolder photoHolder, int i) {
             Photo photo = mItems.get(i);
-
-            Glide.with(photoHolder.itemView)
-                    .load(photo.getThumbnailUrl())
-                    .centerCrop()
-                    .placeholder(R.mipmap.ic_launcher)
-                    .into(photoHolder.thumbnailImageView);
-
-            photoHolder.titleTextView.setText(photo.getTitle());
+            photoHolder.binding.setPhoto(photo);
         }
 
         @Override
@@ -105,14 +97,11 @@ public class NetworkActivity extends AppCompatActivity {
         }
 
         static class PhotoHolder extends RecyclerView.ViewHolder {
-            public ImageView thumbnailImageView;
-            public TextView titleTextView;
+            public ItemPhotoBinding binding;
 
             public PhotoHolder(@NonNull View itemView) {
                 super(itemView);
-
-                thumbnailImageView = itemView.findViewById(R.id.thumbnail_image_view);
-                titleTextView = itemView.findViewById(R.id.title_text_view);
+                binding = DataBindingUtil.bind(itemView);
             }
         }
     }

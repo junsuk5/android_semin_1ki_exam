@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.recyclerviewexam.countdown.CountDownActivity;
+import com.example.recyclerviewexam.databinding.DataBindingActivity;
 import com.example.recyclerviewexam.eventbus.EventBusExamActivity;
 import com.example.recyclerviewexam.exam283.Exam283Activity;
 import com.example.recyclerviewexam.jsrecycleradapter.JsRecyclerExamActivity;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(LoginActivity.class);
         dataList.add(JsRecyclerExamActivity.class);
         dataList.add(TodosActivity.class);
+        dataList.add(DataBindingActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();

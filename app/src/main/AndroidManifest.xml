@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".todos.TodosActivity"></activity>
+        <activity android:name=".databinding.DataBindingActivity"></activity>
+        <activity android:name=".todos.TodosActivity" />
         <activity android:name=".jsrecycleradapter.JsRecyclerExamActivity" />
         <activity android:name=".kotlinexam.jsonplaceholder.LoginActivity" />
         <activity android:name=".kotlinexam.KotlinExamActivity" />
