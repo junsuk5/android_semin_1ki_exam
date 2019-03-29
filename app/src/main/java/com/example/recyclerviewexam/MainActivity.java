@@ -16,6 +16,7 @@ import com.example.recyclerviewexam.jsrecycleradapter.JsRecyclerExamActivity;
 import com.example.recyclerviewexam.kotlinexam.KotlinExamActivity;
 import com.example.recyclerviewexam.kotlinexam.jsonplaceholder.LoginActivity;
 import com.example.recyclerviewexam.network.NetworkActivity;
+import com.example.recyclerviewexam.realm.RealmActivity;
 import com.example.recyclerviewexam.resexam.ResExamActivity;
 import com.example.recyclerviewexam.thread.ThreadActivity;
 import com.example.recyclerviewexam.todos.TodosActivity;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(JsRecyclerExamActivity.class);
         dataList.add(TodosActivity.class);
         dataList.add(DataBindingActivity.class);
+        dataList.add(RealmActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();
