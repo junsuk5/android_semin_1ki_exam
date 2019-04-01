@@ -12,6 +12,7 @@ import com.example.recyclerviewexam.countdown.CountDownActivity;
 import com.example.recyclerviewexam.databinding.DataBindingActivity;
 import com.example.recyclerviewexam.eventbus.EventBusExamActivity;
 import com.example.recyclerviewexam.exam283.Exam283Activity;
+import com.example.recyclerviewexam.firebase.FirebaseActivity;
 import com.example.recyclerviewexam.jsrecycleradapter.JsRecyclerExamActivity;
 import com.example.recyclerviewexam.kotlinexam.KotlinExamActivity;
 import com.example.recyclerviewexam.kotlinexam.jsonplaceholder.LoginActivity;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(TodosActivity.class);
         dataList.add(DataBindingActivity.class);
         dataList.add(RealmActivity.class);
+        dataList.add(FirebaseActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();
