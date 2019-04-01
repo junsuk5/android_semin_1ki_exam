@@ -128,7 +128,12 @@ public class FirebaseActivity extends AppCompatActivity {
         @Override
         public PersonViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
             View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_two_text, viewGroup, false);
-            return new PersonViewHolder(itemView);
+            PersonViewHolder holder = new PersonViewHolder(itemView);
+            itemView.setOnClickListener(v -> {
+                DocumentSnapshot snapshot = getSnapshots().getSnapshot(holder.getAdapterPosition());
+                FirebaseFirestore.getInstance().collection("persons").document(snapshot.getId()).delete();
+            });
+            return holder;
         }
 
         public static class PersonViewHolder extends RecyclerView.ViewHolder {
