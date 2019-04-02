@@ -61,5 +61,9 @@ dependencies {
 
     // FirebaseUI for Cloud Firestore
     implementation 'com.firebaseui:firebase-ui-firestore:4.3.2'
+
+    // 인증
+    implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
+    implementation 'com.google.firebase:firebase-auth:16.2.0'
 }
 apply plugin: 'com.google.gms.google-services'

@@ -1,5 +1,6 @@
 package com.example.recyclerviewexam.firebase;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.example.recyclerviewexam.databinding.ItemTwoTextBinding;
 import com.example.recyclerviewexam.models.Person;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -27,14 +29,21 @@ import java.util.Map;
 public class FirebaseActivity extends AppCompatActivity {
     private static final String TAG = FirebaseActivity.class.getSimpleName();
 
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private PersonFirestoreRecyclerAdapter mAdapter;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+    private PersonFirestoreRecyclerAdapter mAdapter;
     private ActivityRealmBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            // 로그인 안 됨
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+        }
+
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_realm);
 
         Query query = FirebaseFirestore.getInstance()
