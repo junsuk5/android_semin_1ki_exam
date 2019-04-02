@@ -23,13 +23,15 @@ public class LoginActivity extends AppCompatActivity {
 
     private ActivityLogin2Binding mBinding;
 
-    private List<AuthUI.IdpConfig> providers = Arrays.asList(
-            new AuthUI.IdpConfig.PhoneBuilder().build());
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
+
+        List<AuthUI.IdpConfig> providers = Arrays.asList(
+                new AuthUI.IdpConfig.PhoneBuilder().build(),
+                new AuthUI.IdpConfig.EmailBuilder().build());
+
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_login2);
 
         mBinding.callButton.setOnClickListener(v -> {

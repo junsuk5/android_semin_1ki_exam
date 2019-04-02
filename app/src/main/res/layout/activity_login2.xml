@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:orientation="vertical"
         tools:context=".firebase.LoginActivity">
 
         <Button
             android:id="@+id/call_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="전화 인증"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="59dp" />
+            android:text="인증" />
+
     </LinearLayout>
 </layout>

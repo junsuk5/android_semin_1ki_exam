@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -16,9 +18,11 @@ import com.example.recyclerviewexam.R;
 import com.example.recyclerviewexam.databinding.ActivityRealmBinding;
 import com.example.recyclerviewexam.databinding.ItemTwoTextBinding;
 import com.example.recyclerviewexam.models.Person;
+import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -30,6 +34,7 @@ public class FirebaseActivity extends AppCompatActivity {
     private static final String TAG = FirebaseActivity.class.getSimpleName();
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser mUser;
 
     private PersonFirestoreRecyclerAdapter mAdapter;
     private ActivityRealmBinding mBinding;
@@ -42,12 +47,16 @@ public class FirebaseActivity extends AppCompatActivity {
             // 로그인 안 됨
             startActivity(new Intent(this, LoginActivity.class));
             finish();
+        } else {
+            mUser = FirebaseAuth.getInstance().getCurrentUser();
         }
 
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_realm);
 
+
         Query query = FirebaseFirestore.getInstance()
                 .collection("persons")
+                .whereEqualTo("uid", mUser.getUid())
                 .orderBy("age", Query.Direction.DESCENDING)
                 .limit(50);
 
@@ -111,6 +120,7 @@ public class FirebaseActivity extends AppCompatActivity {
         Map<String, Object> person = new HashMap<>();
         person.put("name", mBinding.nameEditText.getText().toString());
         person.put("age", Integer.parseInt(mBinding.ageEditText.getText().toString()));
+        person.put("uid", mUser.getUid());
 
         // Add a new document with a generated ID
         db.collection("persons").add(person);
@@ -165,5 +175,25 @@ public class FirebaseActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         mAdapter.stopListening();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.logout, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_logout) {
+            AuthUI.getInstance()
+                    .signOut(this)
+                    .addOnCompleteListener(task -> {
+                        // ...
+                        startActivity(new Intent(this, LoginActivity.class));
+                        finish();
+                    });
+        }
+        return true;
     }
 }
