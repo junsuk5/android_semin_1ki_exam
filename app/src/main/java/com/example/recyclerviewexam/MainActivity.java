@@ -1,6 +1,8 @@
 package com.example.recyclerviewexam;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -8,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.recyclerviewexam.broadcast.BatteryReceiver;
 import com.example.recyclerviewexam.countdown.CountDownActivity;
 import com.example.recyclerviewexam.databinding.DataBindingActivity;
 import com.example.recyclerviewexam.eventbus.EventBusExamActivity;
@@ -103,5 +106,23 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
     @Override
     public void onSelected(Class clazz) {
         moveActivity(clazz);
+    }
+
+
+    BroadcastReceiver br = new BatteryReceiver();
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_POWER_CONNECTED);
+        filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+        this.registerReceiver(br, filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(br);
     }
 }

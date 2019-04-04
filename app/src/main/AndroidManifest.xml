@@ -12,7 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".firebase.LoginActivity"></activity>
+        <receiver
+            android:name=".broadcast.BatteryReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".firebase.LoginActivity" />
         <activity android:name=".firebase.FirebaseActivity" />
         <activity android:name=".realm.RealmActivity" />
         <activity android:name=".databinding.DataBindingActivity" />
