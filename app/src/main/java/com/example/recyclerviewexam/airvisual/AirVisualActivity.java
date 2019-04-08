@@ -1,6 +1,7 @@
 package com.example.recyclerviewexam.airvisual;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -38,6 +39,10 @@ public class AirVisualActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_air_visual);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_air_visual);
+
+        int color = Color.argb(100, 0, 255, 255);
+
+        mBinding.toolbar.setBackgroundColor(color);
 
         // Retrofit
         Retrofit retrofit = RetrofitBuilder.getInstance(AirVisualService.BASE_URL);
