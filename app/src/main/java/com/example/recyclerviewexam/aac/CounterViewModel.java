@@ -4,16 +4,11 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 public class CounterViewModel extends ViewModel {
-    private MutableLiveData<Integer> counter = new MutableLiveData<>();
-
-    public MutableLiveData<Integer> getCounter() {
-        return counter;
-    }
+    public MutableLiveData<Integer> counter = new MutableLiveData<>();
 
     public CounterViewModel() {
         counter.setValue(0);
     }
-
 
     public void increase() {
         counter.setValue(counter.getValue() + 1);

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.recyclerviewexam.aac.CounterViewModel" />
@@ -35,7 +36,7 @@
             android:onClick="@{() -> viewModel.increase()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_add_white_24dp" />
+            app:srcCompat="@drawable/ic_add_black_24dp" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_remove"
@@ -47,6 +48,6 @@
             android:onClick="@{() -> viewModel.decrease()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_remove_white_24dp" />
+            app:srcCompat="@drawable/ic_remove_black_24dp" />
     </android.support.constraint.ConstraintLayout>
 </layout>
