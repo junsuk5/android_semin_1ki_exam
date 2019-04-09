@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".aac.VmShareActivity">
+
+        <fragment
+            android:id="@+id/fragment1"
+            android:name="com.example.recyclerviewexam.aac.VmShareFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="180dp" />
+
+        <fragment
+            android:id="@+id/fragment2"
+            android:name="com.example.recyclerviewexam.aac.VmShareFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="180dp" />
+    </LinearLayout>
+</layout>

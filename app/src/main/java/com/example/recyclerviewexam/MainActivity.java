@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.recyclerviewexam.aac.CounterActivity;
+import com.example.recyclerviewexam.aac.VmShareActivity;
 import com.example.recyclerviewexam.airvisual.AirVisualActivity;
 import com.example.recyclerviewexam.broadcast.BatteryReceiver;
 import com.example.recyclerviewexam.countdown.CountDownActivity;
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(MapsActivity.class);
         dataList.add(AirVisualActivity.class);
         dataList.add(CounterActivity.class);
+        dataList.add(VmShareActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();

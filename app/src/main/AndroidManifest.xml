@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".aac.CounterActivity"></activity>
+        <activity android:name=".aac.VmShareActivity"></activity>
+        <activity android:name=".aac.CounterActivity" />
         <activity android:name=".airvisual.AirVisualActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
