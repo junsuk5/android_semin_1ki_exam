@@ -10,20 +10,16 @@ import com.example.recyclerviewexam.databinding.ActivityCounterBinding;
 
 public class CounterActivity extends AppCompatActivity {
 
-    private ActivityCounterBinding mBinding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_counter);
-        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_counter);
+
+        ActivityCounterBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_counter);
+        binding.setLifecycleOwner(this);
 
         // ViewModel
         CounterViewModel viewModel = ViewModelProviders.of(this).get(CounterViewModel.class);
 
-        // UI 업데이트
-        viewModel.counterLiveData.observe(this, integer -> {
-            mBinding.setViewModel(viewModel);
-        });
+        binding.setViewModel(viewModel);
     }
 }
