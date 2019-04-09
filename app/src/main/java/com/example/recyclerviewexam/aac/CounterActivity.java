@@ -11,7 +11,6 @@ import com.example.recyclerviewexam.databinding.ActivityCounterBinding;
 public class CounterActivity extends AppCompatActivity {
 
     private ActivityCounterBinding mBinding;
-    private CounterViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,17 +18,12 @@ public class CounterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_counter);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_counter);
 
-        mViewModel = ViewModelProviders.of(this).get(CounterViewModel.class);
-
-
-        // 클릭
-        mBinding.fabAdd.setOnClickListener(v -> mViewModel.increase());
-        mBinding.fabRemove.setOnClickListener(v -> mViewModel.decrease());
-
+        // ViewModel
+        CounterViewModel viewModel = ViewModelProviders.of(this).get(CounterViewModel.class);
 
         // UI 업데이트
-        mViewModel.counterLiveData.observe(this, integer -> {
-            mBinding.countTextView.setText(integer + "");
+        viewModel.counterLiveData.observe(this, integer -> {
+            mBinding.setViewModel(viewModel);
         });
     }
 }
