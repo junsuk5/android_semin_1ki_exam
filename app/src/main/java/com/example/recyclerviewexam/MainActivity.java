@@ -16,6 +16,7 @@ import com.example.recyclerviewexam.airvisual.AirVisualActivity;
 import com.example.recyclerviewexam.broadcast.BatteryReceiver;
 import com.example.recyclerviewexam.countdown.CountDownActivity;
 import com.example.recyclerviewexam.databinding.DataBindingActivity;
+import com.example.recyclerviewexam.easy.EasyActivity;
 import com.example.recyclerviewexam.eventbus.EventBusExamActivity;
 import com.example.recyclerviewexam.exam283.Exam283Activity;
 import com.example.recyclerviewexam.firebase.FirebaseActivity;
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(AirVisualActivity.class);
         dataList.add(CounterActivity.class);
         dataList.add(VmShareActivity.class);
+        dataList.add(EasyActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();
