@@ -1,28 +1,21 @@
 package com.example.recyclerviewexam.network;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.example.recyclerviewexam.R;
 import com.example.recyclerviewexam.databinding.ItemPhotoBinding;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkActivity extends AppCompatActivity {
 
@@ -41,32 +34,23 @@ public class NetworkActivity extends AppCompatActivity {
         PhotoRecyclerAdapter adapter = new PhotoRecyclerAdapter();
         recyclerView.setAdapter(adapter);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://jsonplaceholder.typicode.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
+        NetworkViewModel viewModel = ViewModelProviders.of(this).get(NetworkViewModel.class);
 
-        JsonplaceHolderService service = retrofit.create(JsonplaceHolderService.class);
+        viewModel.photoList.observe(this, photos -> {
+            adapter.setItems(photos);
+            adapter.notifyDataSetChanged();
+        });
 
-        service.listPhotos().enqueue(new Callback<List<Photo>>() {
-            @Override
-            public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
+        viewModel.isProgressing.observe(this, isProgressing -> {
+            if (isProgressing) {
+                mProgressBar.setVisibility(View.VISIBLE);
+            } else {
                 mProgressBar.setVisibility(View.GONE);
-                // 응답
-                List<Photo> photoList = response.body();
-                Log.d(TAG, "onResponse: 크기 : " + photoList.size());
-                Log.d(TAG, "onResponse: " + photoList);
-
-                adapter.setItems(photoList);
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<List<Photo>> call, Throwable t) {
-                // 실패
-                Toast.makeText(NetworkActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
+        viewModel.fetch();
+
     }
 
 
