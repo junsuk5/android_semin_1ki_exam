@@ -64,11 +64,5 @@ public class VmShareFragment extends Fragment {
             }
         });
 
-        binding.button.setOnClickListener(v -> {
-            viewModel.value = 50;
-        });
-
-
-
     }
 }
