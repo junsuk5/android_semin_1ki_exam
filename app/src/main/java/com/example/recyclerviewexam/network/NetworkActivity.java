@@ -9,9 +9,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import com.example.recyclerviewexam.R;
+import com.example.recyclerviewexam.databinding.ActivityNetworkBinding;
 import com.example.recyclerviewexam.databinding.ItemPhotoBinding;
 
 import java.util.ArrayList;
@@ -21,32 +21,24 @@ public class NetworkActivity extends AppCompatActivity {
 
     private static final String TAG = NetworkActivity.class.getSimpleName();
 
-    private ProgressBar mProgressBar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_network);
-
-        mProgressBar = findViewById(R.id.progressBar);
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-
-        PhotoRecyclerAdapter adapter = new PhotoRecyclerAdapter();
-        recyclerView.setAdapter(adapter);
+        ActivityNetworkBinding binding = DataBindingUtil
+                .setContentView(this, R.layout.activity_network);
 
         NetworkViewModel viewModel = ViewModelProviders.of(this).get(NetworkViewModel.class);
+
+        binding.setViewModel(viewModel);
+        binding.setLifecycleOwner(this);
+
+        PhotoRecyclerAdapter adapter = new PhotoRecyclerAdapter();
+        binding.recyclerView.setAdapter(adapter);
+
 
         viewModel.photoList.observe(this, photos -> {
             adapter.setItems(photos);
             adapter.notifyDataSetChanged();
-        });
-
-        viewModel.isProgressing.observe(this, isProgressing -> {
-            if (isProgressing) {
-                mProgressBar.setVisibility(View.VISIBLE);
-            } else {
-                mProgressBar.setVisibility(View.GONE);
-            }
         });
 
         viewModel.fetch();

@@ -19,10 +19,14 @@ public class NetworkViewModel extends ViewModel {
 
     private JsonplaceHolderService service = retrofit.create(JsonplaceHolderService.class);
 
-    MutableLiveData<List<Photo>> photoList = new MutableLiveData<>();
+    public MutableLiveData<List<Photo>> photoList = new MutableLiveData<>();
 
-    MutableLiveData<Boolean> isProgressing = new MutableLiveData<>();
+    public MutableLiveData<Boolean> isProgressing = new MutableLiveData<>();
 
+
+    public NetworkViewModel() {
+        isProgressing.setValue(false);
+    }
 
     public void fetch() {
         isProgressing.setValue(true);
