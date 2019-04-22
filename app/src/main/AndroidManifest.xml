@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".easy.EasyActivity"></activity>
+        <activity android:name=".kotlinbasic.KotlinBasicActivity"></activity>
+        <activity android:name=".easy.EasyActivity" />
         <activity android:name=".aac.VmShareActivity" />
         <activity android:name=".aac.CounterActivity" />
         <activity android:name=".airvisual.AirVisualActivity" />

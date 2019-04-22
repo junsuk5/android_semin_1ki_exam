@@ -9,6 +9,8 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.recyclerviewexam.aac.CounterActivity;
 import com.example.recyclerviewexam.aac.VmShareActivity;
@@ -22,6 +24,7 @@ import com.example.recyclerviewexam.exam283.Exam283Activity;
 import com.example.recyclerviewexam.firebase.FirebaseActivity;
 import com.example.recyclerviewexam.googlemap.MapsActivity;
 import com.example.recyclerviewexam.jsrecycleradapter.JsRecyclerExamActivity;
+import com.example.recyclerviewexam.kotlinbasic.KotlinBasicActivity;
 import com.example.recyclerviewexam.kotlinexam.KotlinExamActivity;
 import com.example.recyclerviewexam.kotlinexam.jsonplaceholder.LoginActivity;
 import com.example.recyclerviewexam.network.NetworkActivity;
@@ -41,6 +44,14 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        final Button button = findViewById(R.id.hybrid);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         // Data
         List<Class> dataList = new ArrayList<>();
@@ -65,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(CounterActivity.class);
         dataList.add(VmShareActivity.class);
         dataList.add(EasyActivity.class);
+        dataList.add(KotlinBasicActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();
