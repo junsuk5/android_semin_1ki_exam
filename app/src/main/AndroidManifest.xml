@@ -17,7 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".kotlinbasic.KotlinBasicActivity"></activity>
+        <activity android:name=".gusikdialog.GusikDialogActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"></activity>
+        <activity android:name=".gusikdialog.GusikDialogMainActivity" />
+        <activity android:name=".kotlinbasic.KotlinBasicActivity" />
         <activity android:name=".easy.EasyActivity" />
         <activity android:name=".aac.VmShareActivity" />
         <activity android:name=".aac.CounterActivity" />
