@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.recyclerviewexam">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -17,8 +18,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".gusikdialog.GusikDialogActivity"
-            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert"></activity>
+        <receiver
+            android:name=".gusikdialog.MyWeatherReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
+        <activity
+            android:name=".gusikdialog.GusikDialogActivity"
+            android:theme="@style/Theme.AppCompat.Light.Dialog.Alert" />
         <activity android:name=".gusikdialog.GusikDialogMainActivity" />
         <activity android:name=".kotlinbasic.KotlinBasicActivity" />
         <activity android:name=".easy.EasyActivity" />
