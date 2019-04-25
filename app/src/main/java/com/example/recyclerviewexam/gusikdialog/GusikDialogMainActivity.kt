@@ -61,6 +61,13 @@ class GusikDialogMainActivity : AppCompatActivity() {
                         pendingIntent)
             }
         }
+
+        screenshot_button.setOnClickListener {
+            val bitmap = BitmapUtil.viewToBitmap(root_layout)
+
+            // 활용
+            val test = "test"
+        }
     }
 }
 
