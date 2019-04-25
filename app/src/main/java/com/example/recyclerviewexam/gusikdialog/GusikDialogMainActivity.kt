@@ -18,5 +18,9 @@ class GusikDialogMainActivity : AppCompatActivity() {
                     "world" to "월드",
                     "int" to 100)
         }
+
+        notification_button.setOnClickListener {
+            NotificationUtil.showNotification(this);
+        }
     }
 }
