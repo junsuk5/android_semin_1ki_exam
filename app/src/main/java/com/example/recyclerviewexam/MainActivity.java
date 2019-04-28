@@ -30,6 +30,7 @@ import com.example.recyclerviewexam.kotlinbasic.KotlinBasicActivity;
 import com.example.recyclerviewexam.kotlinexam.KotlinExamActivity;
 import com.example.recyclerviewexam.kotlinexam.jsonplaceholder.LoginActivity;
 import com.example.recyclerviewexam.network.NetworkActivity;
+import com.example.recyclerviewexam.provider.ProviderExamActivity;
 import com.example.recyclerviewexam.realm.RealmActivity;
 import com.example.recyclerviewexam.resexam.ResExamActivity;
 import com.example.recyclerviewexam.thread.ThreadActivity;
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements ExamRecyclerAdapt
         dataList.add(EasyActivity.class);
         dataList.add(KotlinBasicActivity.class);
         dataList.add(GusikDialogMainActivity.class);
+        dataList.add(ProviderExamActivity.class);
 
         // Adapter
         mAdapter = new ExamRecyclerAdapter();
