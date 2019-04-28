@@ -2,6 +2,8 @@ package com.example.recyclerviewexam.provider;
 
 import android.Manifest;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -56,7 +58,12 @@ public class GalleryFragment extends Fragment {
     private PhotoAdapter initUI(@NonNull View view) {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         PhotoAdapter adapter = new PhotoAdapter(model -> {
-
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(model.getUri()));
+            shareIntent.setType("image/*");
+            if (shareIntent.resolveActivity(requireContext().getPackageManager()) != null) {
+                startActivity(shareIntent);
+            }
         });
         recyclerView.setAdapter(adapter);
         return adapter;
