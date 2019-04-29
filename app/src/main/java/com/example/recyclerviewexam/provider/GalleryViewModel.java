@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.MutableLiveData;
 import android.database.Cursor;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 
@@ -40,8 +41,11 @@ public class GalleryViewModel extends AndroidViewModel {
         if (cursor != null) {
             cursor.moveToFirst();
             while (cursor.moveToNext()) {
-                String uri = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA));
-                photoList.add(new Photo(uri));
+                String uri = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media._ID));
+                Photo photo = new Photo();
+                photo.setPath(cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)));
+                photo.setUri(Uri.withAppendedPath(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, uri));
+                photoList.add(photo);
             }
             cursor.close();
         }
